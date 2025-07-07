@@ -23,7 +23,7 @@ const Login = () => {
 
     if(isSignin){
       try {
-        const loginRes = await fetch('http://localhost:5001/api/customers/login',{
+        const loginRes = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers/login`,{
           method:"post",
           headers:{'Content-type':'application/json'},
           body:JSON.stringify({email,password}),
@@ -61,7 +61,7 @@ const Login = () => {
     }
     else{
       try {
-        const signupResponse =  await fetch('http://localhost:5001/api/customers',{
+        const signupResponse =  await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers`,{
           method:'POST',
           headers:{
             "Content-Type": "application/json",

@@ -43,7 +43,7 @@ async function handleLogin(req, res) {
     //send refresh token in cookies
     res.cookie("refreshToken", refreshToken, {
       httpOnly: true,
-      secure: false,
+      secure: true,
       sameSite: "Lax",
       maxAge: 10 * 60 * 1000, // 7 days
     });

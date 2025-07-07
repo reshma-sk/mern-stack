@@ -5,6 +5,7 @@ jwt-backend/node_modules
 
 #Environment Variables
 jwt-backend/.env
+jwt-auth/.env
 
 #Build output
 jwt-auth/dist

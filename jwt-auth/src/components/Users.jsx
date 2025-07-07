@@ -19,7 +19,7 @@ const Users = () => {
         return;
       }
       let protectedResponse = await fetch(
-        "http://localhost:5001/api/customers/protected",
+        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers/protected`,
         {
           method: "GET",
           headers: {
@@ -37,7 +37,7 @@ const Users = () => {
           return;
         }
         protectedResponse = await fetch(
-          "http://localhost:5000/api/users/protected",
+          `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/protected`,
           {
             method: "GET",
             headers: {
@@ -62,7 +62,7 @@ const Users = () => {
 
   async function refreshAccessToken() {
     try {
-      const res = await fetch("http://localhost:5000/api/users/refresh-token", {
+      const res = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/users/refresh-token`, {
         method: "POST",
         credentials: "include", // important to send cookies!
       });

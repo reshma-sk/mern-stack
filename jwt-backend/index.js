@@ -2,11 +2,13 @@ const express = require('express')
 const {connectMongoDb} = require('./connect')
 const customerRouter = require('./routes/customer')
 const cookieParser = require("cookie-parser");
+const dotenv = require('dotenv');
+dotenv.config();
 const app = express()
 const cors = require("cors")
 const port = 5001;
 app.use(cors({
-    origin: "http://localhost:5173",  // Allow requests from your frontend domain
+    origin: process.env.FRONTEND_URL,  // Allow requests from your frontend domain
     credentials: true,                // Allow cookies and credentials
 }))
 app.use(express.urlencoded({ extended: false }));
