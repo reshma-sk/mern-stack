@@ -1,0 +1,11 @@
+#Node modules
+
+jwt-auth/node_modules
+jwt-backend/node_modules
+
+#Environment Variables
+jwt-backend/.env
+
+#Build output
+jwt-auth/dist
+jwt-backend/dist
