@@ -61,7 +61,7 @@ const Login = () => {
     }
     else{
       try {
-        const signupResponse =  await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers`,{
+        const signupResponse =  await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}api/customers`,{
           method:'POST',
           headers:{
             "Content-Type": "application/json",
