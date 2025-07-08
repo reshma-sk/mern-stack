@@ -93,7 +93,7 @@ const Login = () => {
         const response = await fetch(`${baseURL}/api/customers`,{
           method: 'GET',
         });
-        console.log(response.status);
+        console.log(response);
         console.log("Backend URL:", `${baseURL}/api/customers`);
 
         if (!response.ok) {
