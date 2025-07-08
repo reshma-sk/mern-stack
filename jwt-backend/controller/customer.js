@@ -20,6 +20,7 @@ async function handleCreateNewCustomer(req,res) {
 }
 async function renderResponse(req,res) {
   res.send('hello from server')
+  
 }
 async function handleLogin(req, res) {
   const { email, password } = req.body;
