@@ -11,7 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const[errorMessage,setErrorMessage] = useState(null)
   const navigate = useNavigate();
-  const[message,setMessage] = useState('')
+  const[message,setMessage] = useState('Hello')
 
   const toglleForm = ()=>{
     setIsSignin(!isSignin)  
@@ -31,14 +31,8 @@ const Login = () => {
           credentials: "include", // ✅ important for cookies
         })
         
-        if (!loginRes.ok) {
-          const errorData = await loginRes.json();
-          setErrorMessage(errorData?.message || 'Login failed');
-          return;
-        }
-        
         const response = await loginRes.json();
-        //console.log(response);
+        console.log(response);
         const accessToken = response.accessToken
         const customer = response.customer
         if (accessToken && customer) {
@@ -95,10 +89,11 @@ const Login = () => {
   useEffect(() => {
     async function getReq() {
       try {
-        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}`, {
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers`, {
           method: 'GET',
         });
-
+        console.log(response);
+        
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
@@ -152,6 +147,7 @@ const Login = () => {
           {isSignin ? "new, register" : "already member,login"}
         </p>
       </form>
+      {message}
     </>
   );
 };
