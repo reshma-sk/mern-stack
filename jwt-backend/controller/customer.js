@@ -18,7 +18,9 @@ async function handleCreateNewCustomer(req,res) {
       res.status(500).json({ error: "Please give unique values.", message: error.message });
     } 
 }
-
+async function renderResponse(req,res) {
+  res.send('hello from server')
+}
 async function handleLogin(req, res) {
   const { email, password } = req.body;
   try {
@@ -93,4 +95,5 @@ module.exports = {
   handleLogin,
   handleRefreshToken,
   handleProtected,
+  renderResponse,
 };
