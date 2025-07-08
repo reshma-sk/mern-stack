@@ -9,7 +9,7 @@ const cors = require("cors")
 const port = 5001;
 app.use(cors({
     //origin: process.env.FRONTEND_URL,  // Allow requests from your frontend domain
-    origin:'https://mern-stack-715t.vercel.app/',
+    origin:process.env.FRONTEND_URL,
     credentials: true,                // Allow cookies and credentials
 }))
 app.use(express.urlencoded({ extended: false }));

@@ -19,7 +19,7 @@ async function handleCreateNewCustomer(req,res) {
     } 
 }
 async function renderResponse(req,res) {
-  res.send('hello from server')
+  res.json({message:'hello from server'})
   
 }
 async function handleLogin(req, res) {

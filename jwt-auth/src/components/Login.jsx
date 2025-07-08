@@ -92,14 +92,14 @@ const Login = () => {
         const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers`, {
           method: 'GET',
         });
-        console.log(response);
+        console.log(response.status);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);
         }
 
-        const data = await response.text(); // or .json() if your backend returns JSON
-        setMessage(data); // ✅ store it in state
+        const data = await response.json(); // or .json() if your backend returns JSON
+        setMessage(data.message); // ✅ store it in state
       } catch (error) {
         console.error('Fetch error:', error);
         setMessage('Failed to load message.');
@@ -114,6 +114,7 @@ const Login = () => {
 
   return (
     <>
+    <h3>{message}</h3>
       <form type="submit" onSubmit={(e) => e.preventDefault()}>
         <h1>{!isSignin ? "Signup" : "Signin"}</h1>
         {!isSignin && (
@@ -147,7 +148,7 @@ const Login = () => {
           {isSignin ? "new, register" : "already member,login"}
         </p>
       </form>
-      {message}
+      
     </>
   );
 };
