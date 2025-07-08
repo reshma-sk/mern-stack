@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import  { useState,useEffect } from 'react'
 import { checkValidData } from '../utils/validate';
 import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
@@ -11,6 +11,7 @@ const Login = () => {
   const [password, setPassword] = useState("");
   const[errorMessage,setErrorMessage] = useState(null)
   const navigate = useNavigate();
+  const[message,setMessage] = useState('')
 
   const toglleForm = ()=>{
     setIsSignin(!isSignin)  
@@ -91,6 +92,31 @@ const Login = () => {
     }
     
   }
+  useEffect(() => {
+    async function getReq() {
+      try {
+        const response = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}`, {
+          method: 'GET',
+        });
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.text(); // or .json() if your backend returns JSON
+        setMessage(data); // ✅ store it in state
+      } catch (error) {
+        console.error('Fetch error:', error);
+        setMessage('Failed to load message.');
+      }
+    }
+
+    getReq();
+    
+  }, []);
+  
+  
+
   return (
     <>
       <form type="submit" onSubmit={(e) => e.preventDefault()}>
