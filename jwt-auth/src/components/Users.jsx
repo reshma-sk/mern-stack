@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom'
-
+const BASE_URL = import.meta.env.VITE_REACT_APP_BACKEND_BASEURL;
 const Users = () => {
   const [customer, setCustomer] = useState("");
   //const[errorMessage,setErrorMessage] = useState('')
@@ -19,7 +19,7 @@ const Users = () => {
         return;
       }
       let protectedResponse = await fetch(
-        `${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers/protected`,
+        `${BASE_URL}/api/customers/protected`,
         {
           method: "GET",
           headers: {

@@ -2,7 +2,7 @@ import  { useState,useEffect } from 'react'
 import { checkValidData } from '../utils/validate';
 import {useNavigate} from 'react-router-dom'
 import { toast } from 'react-toastify';
-
+const BASE_URL = import.meta.env.VITE_REACT_APP_BACKEND_BASEURL
 
 const Login = () => {
   const [isSignin, setIsSignin] = useState(true);
@@ -24,7 +24,7 @@ const Login = () => {
 
     if(isSignin){
       try {
-        const loginRes = await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers/login`,{
+        const loginRes = await fetch(`${BASE_URL}/api/customers/login`,{
           method:"post",
           headers:{'Content-type':'application/json'},
           body:JSON.stringify({email,password}),
@@ -56,7 +56,7 @@ const Login = () => {
     }
     else{
       try {
-        const signupResponse =  await fetch(`${import.meta.env.VITE_REACT_APP_BACKEND_BASEURL}/api/customers`,{
+        const signupResponse =  await fetch(`${BASE_URL}/api/customers`,{
           method:'POST',
           headers:{
             "Content-Type": "application/json",

@@ -25,7 +25,7 @@ async function renderResponse(req,res) {
 async function handleLogin(req, res) {
   const { email, password } = req.body;
   try {
-    const customer = await Customer.findOne({ email });
+    const customer = await Customer.findOne({ email: email.trim().toLowerCase() });
     console.log(customer);
     
     if (!customer) {
